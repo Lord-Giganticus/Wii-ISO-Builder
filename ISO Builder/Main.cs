@@ -30,7 +30,7 @@ namespace ISO_Builder
             {
                 Title = "Search for a Wii/GC game",
                 Multiselect = false,
-                Filter = "Wii Image Formats (*.ico,*.ciso,*.wdi,*.wdf,*.wia,*.wbfs)|*.ico,*.ciso,*.wdi,*.wdf,*.wia,*.wbfs|ico file (*.iso)|*.iso|ciso file (*.ciso)|*.ciso|wbi file (*.wbi)|*.wbi|wdf file (*.wdf)|*.wdf|wia file (*.wia)|*.wia|wbfs file (*.wbfs)|*.wbfs|All files (*.*)|*.*",
+                Filter = "Wii Image Formats (*.ico,*.ciso,*.wdi,*.wdf,*.wia,*.wbfs)|*.ico;*.ciso;*.wdi;*.wdf;*.wia;*.wbfs|ico file (*.iso)|*.iso|ciso file (*.ciso)|*.ciso|wbi file (*.wbi)|*.wbi|wdf file (*.wdf)|*.wdf|wia file (*.wia)|*.wia|wbfs file (*.wbfs)|*.wbfs|All files (*.*)|*.*",
                 CheckFileExists = true,
                 FilterIndex = 1,
                 InitialDirectory = Directory.GetCurrentDirectory()
