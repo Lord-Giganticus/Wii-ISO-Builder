@@ -89,7 +89,10 @@ namespace ISO_Builder
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv();
+            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv
+            {
+                folder = textBox2.Text
+            };
             riiv.ShowDialog();
         }
     }
