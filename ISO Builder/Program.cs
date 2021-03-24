@@ -18,7 +18,7 @@ namespace ISO_Builder
             if (!File.Exists("wit.exe"))
             {
                 Classes.Manager.ExtractRecourse extract = new Classes.Manager.ExtractRecourse();
-                extract.ViaBytes("wit.exe",Properties.Resource.wit);
+                extract.ViaBytes("wit.exe",Properties.Resources.wit);
             }
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

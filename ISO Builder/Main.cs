@@ -57,5 +57,40 @@ namespace ISO_Builder
                 textBox2.Text = open.FileName;
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Classes.Builder builder = new Classes.Builder();
+            if (checkBox1.Checked)
+            {
+                builder.Build(textBox1.Text, textBox2.Text, ".iso");
+            } else if (checkBox2.Checked)
+            {
+                builder.Build(textBox1.Text, textBox2.Text, ".ciso");
+            } else if (checkBox3.Checked)
+            {
+                builder.Build(textBox1.Text, textBox2.Text, ".wbi");
+            } else if (checkBox4.Checked)
+            {
+                builder.Build(textBox1.Text, textBox2.Text, ".wdf");
+            } else if (checkBox5.Checked)
+            {
+                builder.Build(textBox1.Text, textBox2.Text, ".wia");
+            } else if (checkBox6.Checked)
+            {
+                builder.Build(textBox1.Text, textBox2.Text, ".wbfs");
+            } else
+            {
+                return;
+            }
+            MessageBox.Show("Complete!","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            return;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv();
+            riiv.ShowDialog();
+        }
     }
 }
