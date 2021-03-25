@@ -106,8 +106,28 @@ namespace ISO_Builder
             }
             var ID = File.ReadAllText("ID.txt");
             File.Delete("ID.txt");
-            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(ID);
+            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(ID, Path.GetFileNameWithoutExtension(textBox1.Text));
+            if (BackColor == SystemColors.Control)
+            {
+                riiv.BackColor = SystemColors.Control;
+            } else if (BackColor == SystemColors.ControlDarkDark)
+            {
+                riiv.BackColor = SystemColors.ControlDarkDark;
+            }
             riiv.ShowDialog();
+        }
+
+        private void ThemeMenu_Click(object sender, EventArgs e)
+        {
+            if (BackColor == SystemColors.Control)
+            {
+                BackColor = SystemColors.ControlDarkDark;
+                menuStrip1.BackColor = SystemColors.ControlDarkDark;
+            } else if (BackColor == SystemColors.ControlDarkDark)
+            {
+                BackColor = SystemColors.Control;
+                menuStrip1.BackColor = SystemColors.Control;
+            }
         }
     }
 }

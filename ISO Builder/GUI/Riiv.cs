@@ -5,7 +5,7 @@ namespace Riivolution_XML_Generator
 {
     public partial class Riiv : Form
     {
-        public Riiv(string ID)
+        public Riiv(string ID, string name)
         {
             InitializeComponent();
             if (!string.IsNullOrEmpty(ID))
@@ -13,7 +13,11 @@ namespace Riivolution_XML_Generator
                 ISO_Builder.Classes.IDParse parse = new ISO_Builder.Classes.IDParse();
                 textBox1.Text = parse.RemoveUnwantedChar(ID);
                 textBox4.Text = textBox1.Text;
-                textBox5.Text = ID;
+                textBox5.Text = textBox1.Text;
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                textBox2.Text = name;
             }
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -58,8 +62,8 @@ namespace Riivolution_XML_Generator
             string pid = textBox4.Text;
             string fp = textBox5.Text;
             Classes.XML_Generator.Generate(gameid, rgp, on, pid, fp);
-            MessageBox.Show("Finshed! Press ok to exit.", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            Close();
+            MessageBox.Show("Finshed!", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            return;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -33,6 +33,7 @@ namespace ISO_Builder
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.AboutMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ThemeMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,10 +52,13 @@ namespace ISO_Builder
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutMenu});
+            this.AboutMenu,
+            this.ThemeMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(549, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -65,6 +69,13 @@ namespace ISO_Builder
             this.AboutMenu.Size = new System.Drawing.Size(52, 20);
             this.AboutMenu.Text = "About";
             this.AboutMenu.Click += new System.EventHandler(this.AboutMenu_Click);
+            // 
+            // ThemeMenu
+            // 
+            this.ThemeMenu.Name = "ThemeMenu";
+            this.ThemeMenu.Size = new System.Drawing.Size(55, 20);
+            this.ThemeMenu.Text = "Theme";
+            this.ThemeMenu.Click += new System.EventHandler(this.ThemeMenu_Click);
             // 
             // button1
             // 
@@ -195,6 +206,7 @@ namespace ISO_Builder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(549, 450);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -221,7 +233,6 @@ namespace ISO_Builder
             this.PerformLayout();
 
         }
-
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -239,6 +250,7 @@ namespace ISO_Builder
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ToolStripMenuItem ThemeMenu;
     }
 }
 
