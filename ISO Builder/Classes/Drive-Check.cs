@@ -33,7 +33,8 @@ namespace Riivolution_XML_Generator.Classes
                     Directory.SetCurrentDirectory(starting_point);
                     break;
                 }
-            loop:;
+            loop:
+                continue;
             }
             if (!folder.EndsWith("riivolution"))
             {

@@ -1,12 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
@@ -22,6 +16,7 @@ namespace ISO_Builder
         private void AboutMenu_Click(object sender, EventArgs e)
         {
             GUI.AboutBox aboutBox = new GUI.AboutBox();
+            aboutBox.BackColor = BackColor;
             aboutBox.ShowDialog();
         }
 
@@ -106,14 +101,13 @@ namespace ISO_Builder
             }
             var ID = File.ReadAllText("ID.txt");
             File.Delete("ID.txt");
-            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(ID, Path.GetFileNameWithoutExtension(textBox1.Text));
-            if (BackColor == SystemColors.Control)
+            if (!string.IsNullOrEmpty(ID))
             {
-                riiv.BackColor = SystemColors.Control;
-            } else if (BackColor == SystemColors.ControlDarkDark)
-            {
-                riiv.BackColor = SystemColors.ControlDarkDark;
+                Properties.Settings.Default.LastID = ID;
+                Properties.Settings.Default.Save();
             }
+            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(Properties.Settings.Default.LastID, Path.GetFileNameWithoutExtension(textBox1.Text));
+            riiv.BackColor = BackColor;
             riiv.ShowDialog();
         }
 

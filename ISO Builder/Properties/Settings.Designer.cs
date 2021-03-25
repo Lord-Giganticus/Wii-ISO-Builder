@@ -22,5 +22,17 @@ namespace ISO_Builder.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RMCE")]
+        public string LastID {
+            get {
+                return ((string)(this["LastID"]));
+            }
+            set {
+                this["LastID"] = value;
+            }
+        }
     }
 }
