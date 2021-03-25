@@ -5,13 +5,15 @@ namespace Riivolution_XML_Generator
 {
     public partial class Riiv : Form
     {
-        public string folder { get; set; }
-        public Riiv()
+        public Riiv(string ID)
         {
             InitializeComponent();
-            if (!string.IsNullOrEmpty(folder))
+            if (!string.IsNullOrEmpty(ID))
             {
-                textBox5.Text = folder;
+                ISO_Builder.Classes.IDParse parse = new ISO_Builder.Classes.IDParse();
+                textBox1.Text = parse.RemoveUnwantedChar(ID);
+                textBox4.Text = textBox1.Text;
+                textBox5.Text = ID;
             }
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -229,7 +229,6 @@ namespace ISO_Builder
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -239,6 +238,7 @@ namespace ISO_Builder
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        public System.Windows.Forms.TextBox textBox2;
     }
 }
 

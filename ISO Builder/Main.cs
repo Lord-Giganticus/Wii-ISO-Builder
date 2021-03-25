@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ISO_Builder
 {
@@ -89,10 +90,23 @@ namespace ISO_Builder
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv
+            using (Process process = new Process())
             {
-                folder = textBox2.Text
-            };
+                ProcessStartInfo process1 = new ProcessStartInfo
+                {
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = "cmd.exe",
+                    Arguments = "/c wit ID6 \""+textBox1.Text + "\" > ID.txt"
+                };
+                process.StartInfo = process1;
+                process.Start();
+                process.WaitForExit();
+            }
+            var ID = File.ReadAllText("ID.txt");
+            File.Delete("ID.txt");
+            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(ID);
             riiv.ShowDialog();
         }
     }
