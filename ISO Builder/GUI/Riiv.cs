@@ -61,7 +61,8 @@ namespace Riivolution_XML_Generator
             string on = textBox3.Text;
             string pid = textBox4.Text;
             string fp = textBox5.Text;
-            Classes.XML_Generator.Generate(gameid, rgp, on, pid, fp);
+            string output = Classes.XML_Generator.Generate(gameid, rgp, on, pid, fp);
+            var foward_slashes = ISO_Builder.Classes.StringParse.ContainsAnyCase(output, char.Parse("/")).ToString();
             MessageBox.Show("Finshed!", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
             return;
         }

@@ -17,7 +17,7 @@ namespace Riivolution_XML_Generator.Classes
         /// <param name="opiton_name">The name of the option</param>
         /// <param name="PID">The name of the Patch ID</param>
         /// <param name="fp">The path to the folder containing the mods.</param>
-        public static void Generate(string Game_ID, string RGN, string opiton_name, string PID, string fp)
+        public static string Generate(string Game_ID, string RGN, string opiton_name, string PID, string fp)
         {
             if (fp.StartsWith("/") == false)
             {
@@ -57,8 +57,11 @@ namespace Riivolution_XML_Generator.Classes
             {
                 string fileName = saveDialog.FileName;
                 File.WriteAllLines(fileName, lines, Encoding.UTF8);
+                return fileName;
+            } else
+            {
+                return "";
             }
-            return;
         }
     }
 }
