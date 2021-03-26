@@ -6,7 +6,7 @@ namespace ISO_Builder.Classes
 {
     public class Builder
     {
-        public void Build(string file, string zip, string extension)
+        public void Build(string file, string zip, string extension, string output)
         {
             using (Process process = new Process())
             {
@@ -38,6 +38,7 @@ namespace ISO_Builder.Classes
                 process.Start();
                 process.WaitForExit();
             }
+            File.Move(Path.GetFileNameWithoutExtension(file) + extension, output);
         }
     }
 }

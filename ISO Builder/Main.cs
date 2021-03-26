@@ -26,7 +26,7 @@ namespace ISO_Builder
             {
                 Title = "Search for a Wii/GC game",
                 Multiselect = false,
-                Filter = "Wii Image Formats (*.ico,*.ciso,*.wdi,*.wdf,*.wia,*.wbfs)|*.ico;*.ciso;*.wdi;*.wdf;*.wia;*.wbfs|ico file (*.iso)|*.iso|ciso file (*.ciso)|*.ciso|wbi file (*.wbi)|*.wbi|wdf file (*.wdf)|*.wdf|wia file (*.wia)|*.wia|wbfs file (*.wbfs)|*.wbfs|All files (*.*)|*.*",
+                Filter = "WIT Image Formats (*.ico;*.wbfs)|*.ico;*.wbfs|ico file (*.iso)|*.iso|wbfs file (*.wbfs)|*.wbfs|All files (*.*)|*.*",
                 CheckFileExists = true,
                 FilterIndex = 1,
                 InitialDirectory = Directory.GetCurrentDirectory()
@@ -57,29 +57,27 @@ namespace ISO_Builder
         private void button3_Click(object sender, EventArgs e)
         {
             Classes.Builder builder = new Classes.Builder();
-            if (checkBox1.Checked)
+            SaveFileDialog save = new SaveFileDialog {
+                Title = "Save the new Wii Image",
+                Filter = "WIT Image Formats (*.iso;*.wbfs)|*.iso;*.wbfs|iso file (*.iso)|*.iso|wbfs file (*.wbfs)|*.wbfs|All files (*.*)|*.*",
+                FilterIndex = 1,
+                InitialDirectory = Directory.GetCurrentDirectory(),
+                FileName = Path.GetFileNameWithoutExtension(textBox1.Text),
+                DefaultExt = ".wbfs"
+            };
+            if (save.ShowDialog() == DialogResult.OK)
             {
-                builder.Build(textBox1.Text, textBox2.Text, ".iso");
-            } else if (checkBox2.Checked)
-            {
-                builder.Build(textBox1.Text, textBox2.Text, ".ciso");
-            } else if (checkBox3.Checked)
-            {
-                builder.Build(textBox1.Text, textBox2.Text, ".wbi");
-            } else if (checkBox4.Checked)
-            {
-                builder.Build(textBox1.Text, textBox2.Text, ".wdf");
-            } else if (checkBox5.Checked)
-            {
-                builder.Build(textBox1.Text, textBox2.Text, ".wia");
-            } else if (checkBox6.Checked)
-            {
-                builder.Build(textBox1.Text, textBox2.Text, ".wbfs");
-            } else
-            {
-                return;
+                string ext = "";
+                if (save.FileName.EndsWith(save.DefaultExt))
+                {
+                    ext = Classes.StringExtension.GetLast(save.FileName, 5);
+                } else if (save.FileName.EndsWith(".iso"))
+                {
+                    ext = Classes.StringExtension.GetLast(save.FileName, 4);
+                }
+                builder.Build(textBox1.Text, textBox2.Text, ext, save.FileName);
+                MessageBox.Show("Complete!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            MessageBox.Show("Complete!","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
             return;
         }
 
@@ -121,7 +119,19 @@ namespace ISO_Builder
             {
                 BackColor = SystemColors.Control;
                 menuStrip1.BackColor = SystemColors.Control;
+            } else
+            {
+                BackColor = SystemColors.Control;
+                menuStrip1.BackColor = SystemColors.Control;
             }
+        }
+
+
+        private void RngThemeMenu_Click(object sender, EventArgs e)
+        {
+            Classes.Color color = new Classes.Color();
+            BackColor = color.RandomColor;
+            menuStrip1.BackColor = BackColor;
         }
     }
 }
