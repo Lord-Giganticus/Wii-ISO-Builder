@@ -3,11 +3,16 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
+using ISO_Builder.Classes;
+using ISO_Builder.Properties;
+using System.IO.Compression;
 
 namespace ISO_Builder
 {
     public partial class Main : Form
     {
+        internal static ZipArchive Archive { get; set; }
+
         public Main()
         {
             InitializeComponent();
@@ -15,8 +20,10 @@ namespace ISO_Builder
 
         private void AboutMenu_Click(object sender, EventArgs e)
         {
-            GUI.AboutBox aboutBox = new GUI.AboutBox();
-            aboutBox.BackColor = BackColor;
+            GUI.AboutBox aboutBox = new GUI.AboutBox
+            {
+                BackColor = BackColor
+            };
             aboutBox.ShowDialog();
         }
 
@@ -50,13 +57,13 @@ namespace ISO_Builder
             };
             if (open.ShowDialog() == DialogResult.OK)
             {
+                Archive = ZipFile.OpenRead(open.FileName);
                 textBox2.Text = open.FileName;
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Classes.Builder builder = new Classes.Builder();
             SaveFileDialog save = new SaveFileDialog {
                 Title = "Save the new Wii Image",
                 Filter = "WIT Image Formats (*.iso;*.wbfs)|*.iso;*.wbfs|iso file (*.iso)|*.iso|wbfs file (*.wbfs)|*.wbfs|All files (*.*)|*.*",
@@ -70,12 +77,12 @@ namespace ISO_Builder
                 string ext = "";
                 if (save.FileName.EndsWith(save.DefaultExt))
                 {
-                    ext = Classes.StringExtension.GetLast(save.FileName, 5);
+                    ext = StringExtension.GetLast(save.FileName, 5);
                 } else if (save.FileName.EndsWith(".iso"))
                 {
-                    ext = Classes.StringExtension.GetLast(save.FileName, 4);
+                    ext = StringExtension.GetLast(save.FileName, 4);
                 }
-                builder.Build(textBox1.Text, textBox2.Text, ext, save.FileName);
+                Builder.Build(textBox1.Text, textBox2.Text, ext, save.FileName);
                 MessageBox.Show("Complete!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return;
@@ -101,11 +108,13 @@ namespace ISO_Builder
             File.Delete("ID.txt");
             if (!string.IsNullOrEmpty(ID))
             {
-                Properties.Settings.Default.LastID = ID;
-                Properties.Settings.Default.Save();
+                Settings.Default.LastID = ID;
+                Settings.Default.Save();
             }
-            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(Properties.Settings.Default.LastID, Path.GetFileNameWithoutExtension(textBox1.Text));
-            riiv.BackColor = BackColor;
+            Riivolution_XML_Generator.Riiv riiv = new Riivolution_XML_Generator.Riiv(Settings.Default.LastID, Path.GetFileNameWithoutExtension(textBox1.Text))
+            {
+                BackColor = BackColor
+            };
             riiv.ShowDialog();
         }
 
@@ -129,7 +138,7 @@ namespace ISO_Builder
 
         private void RngThemeMenu_Click(object sender, EventArgs e)
         {
-            Classes.Color color = new Classes.Color();
+            Colors color = new Colors();
             BackColor = color.RandomColor;
             menuStrip1.BackColor = BackColor;
         }

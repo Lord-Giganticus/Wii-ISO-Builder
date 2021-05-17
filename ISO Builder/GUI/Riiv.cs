@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Riivolution_XML_Generator.Classes;
 
 namespace Riivolution_XML_Generator
 {
@@ -22,7 +23,7 @@ namespace Riivolution_XML_Generator
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Classes.Open.Url(linkLabel1.Text);
+            Open.Url(linkLabel1.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,9 +62,7 @@ namespace Riivolution_XML_Generator
             string on = textBox3.Text;
             string pid = textBox4.Text;
             string fp = textBox5.Text;
-            string output = Classes.XML_Generator.Generate(gameid, rgp, on, pid, fp);
-            var foward_slashes = ISO_Builder.Classes.StringParse.ContainsAnyCase(output, char.Parse("/")).ToString();
-            MessageBox.Show("Finshed!", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            XML_Generator.Generate(gameid, rgp, on, pid, fp);
             return;
         }
 

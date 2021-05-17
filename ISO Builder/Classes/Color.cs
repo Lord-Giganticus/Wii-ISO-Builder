@@ -4,11 +4,11 @@ using System;
 
 namespace ISO_Builder.Classes
 {
-    class Color
+    class Colors
     {
-        private List<System.Drawing.Color> GetColors()
+        private List<Color> GetColors()
         {
-            List<System.Drawing.Color> lists = new List<System.Drawing.Color>();
+            List<Color> lists = new List<Color>();
             lists.Add(SystemColors.ActiveBorder);
             lists.Add(SystemColors.ActiveCaption);
             lists.Add(SystemColors.ActiveCaptionText);
@@ -45,14 +45,14 @@ namespace ISO_Builder.Classes
             return lists;
         }
 
-        private System.Drawing.Color GetRandomColor(List<System.Drawing.Color> list)
+        private Color GetRandomColor(List<Color> list)
         {
             Random rnd = new Random();
             int r = rnd.Next(list.Count);
             return list[r];
         }
 
-        public System.Drawing.Color RandomColor 
+        public Color RandomColor 
         { get 
             { return GetRandomColor(GetColors()); }
         }
