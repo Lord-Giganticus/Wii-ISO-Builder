@@ -39,9 +39,6 @@ namespace Riivolution_XML_Generator.Classes
             if (!folder.EndsWith("riivolution"))
             {
                 folder = starting_point;
-            } else
-            {
-                //pass
             }
             return folder;
         }

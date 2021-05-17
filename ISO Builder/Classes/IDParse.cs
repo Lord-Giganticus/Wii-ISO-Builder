@@ -7,7 +7,7 @@ namespace ISO_Builder.Classes
     class IDParse
     {
         const string allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        public string RemoveUnwantedChar(string input)
+        public static string RemoveUnwantedChar(string input)
         {
             StringBuilder builder = new StringBuilder(input.Length);
 

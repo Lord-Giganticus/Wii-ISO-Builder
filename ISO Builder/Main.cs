@@ -77,10 +77,10 @@ namespace ISO_Builder
                 string ext = "";
                 if (save.FileName.EndsWith(save.DefaultExt))
                 {
-                    ext = StringExtension.GetLast(save.FileName, 5);
+                    ext = save.FileName.GetLast(5);
                 } else if (save.FileName.EndsWith(".iso"))
                 {
-                    ext = StringExtension.GetLast(save.FileName, 4);
+                    ext = save.FileName.GetLast(4);
                 }
                 Builder.Build(textBox1.Text, textBox2.Text, ext, save.FileName);
                 MessageBox.Show("Complete!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);

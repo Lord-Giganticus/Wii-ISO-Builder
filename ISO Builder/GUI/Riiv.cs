@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Riivolution_XML_Generator.Classes;
+using ISO_Builder.Classes;
 
 namespace Riivolution_XML_Generator
 {
@@ -11,8 +12,7 @@ namespace Riivolution_XML_Generator
             InitializeComponent();
             if (!string.IsNullOrEmpty(ID))
             {
-                ISO_Builder.Classes.IDParse parse = new ISO_Builder.Classes.IDParse();
-                textBox1.Text = parse.RemoveUnwantedChar(ID);
+                textBox1.Text = IDParse.RemoveUnwantedChar(ID);
                 textBox4.Text = textBox1.Text;
                 textBox5.Text = textBox1.Text;
             }

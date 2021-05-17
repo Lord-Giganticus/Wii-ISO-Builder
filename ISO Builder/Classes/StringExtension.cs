@@ -12,7 +12,7 @@ namespace ISO_Builder.Classes
         {
             if (tail_length >= source.Length)
                 return source;
-            return source.Substring(source.Length - tail_length);
+            return source[^tail_length..];
         }
     }
 }
